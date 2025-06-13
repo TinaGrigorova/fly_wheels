@@ -78,7 +78,7 @@ WSGI_APPLICATION = "fly_wheels.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mop_alias_thorn_845685',
+        'NAME': 'basil_trump_volt_88481',
         'USER': 'neondb_owner',
         'PASSWORD': 'npg_kKCG63pOwxvX',
         'HOST': 'ep-hidden-leaf-a25emr0f.eu-central-1.aws.neon.tech',
