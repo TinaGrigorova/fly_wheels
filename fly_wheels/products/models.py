@@ -2,8 +2,8 @@ from django.db import models
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
-        ('Alloy Wheels', 'Alloy Wheels'),
-        ('Track Edition', 'Track Edition'),
+        ('alloy', 'Alloy Wheels'),
+        ('track', 'Track Edition'),
     ]
 
     name = models.CharField(max_length=100)
