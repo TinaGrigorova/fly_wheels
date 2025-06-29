@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from .models import Product
 
 def shop(request):
-    return render(request, 'products/shop.html')  # You'll create this template later
+    alloy_wheels = Product.objects.filter(category='Alloy Wheels')
+    track_edition = Product.objects.filter(category='Track Edition')
+    return render(request, 'products/shop.html', {
+        'alloy_wheels': alloy_wheels,
+        'track_edition': track_edition,
+    })
