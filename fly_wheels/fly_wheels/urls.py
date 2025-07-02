@@ -21,17 +21,12 @@ from django.conf.urls.static import static
 from store.views import home
 from store.views import index
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
-    path('products/', include('products.urls')),
+    path('shop/', include('products.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', home, name='home'),
 ]
 
 if settings.DEBUG:
