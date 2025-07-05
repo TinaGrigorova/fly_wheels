@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | Fly Wheels{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">{{ title }}</h2>
+<div class="row justify-content-center">
+    {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">£{{ product.price }}</p>
+                    <button class="btn btn-outline-dark">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
