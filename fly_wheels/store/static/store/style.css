@@ -1,0 +1,49 @@
+.hero-collage {
+    background-image: url('/static/store/images/bg-collage.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 200px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-collage .overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+    padding: 60px 30px;
+    border-radius: 8px;
+}
+
+.hero-section {
+    position: relative;
+    background: url("/static/store/images/bg-collage.png") center center / cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6); 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
