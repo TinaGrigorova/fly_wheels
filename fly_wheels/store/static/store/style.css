@@ -9,7 +9,7 @@
 }
 
 .hero-collage .overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+    background-color: rgba(0, 0, 0, 0.5); 
     padding: 60px 30px;
     border-radius: 8px;
 }
