@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<h2>Your Shopping Cart</h2>
+
+{% if order %}
+    <ul class="list-group mb-3">
+        {% for item in order.items.all %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ item.product.name }} (x{{ item.quantity }})
+            <span>£{{ item.subtotal }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total: £{{ order.items.all|sum:"subtotal" }}</strong></p>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}
