@@ -3,6 +3,15 @@ from .models import Product
 from django.shortcuts import get_object_or_404, redirect
 from .models import Product, Order, CartItem
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404
+
+def view_cart(request):
+    order = get_object_or_404(Order, user=request.user, is_ordered=False)
+    total = sum(item.subtotal for item in order.items.all())
+    return render(request, 'products/cart.html', {
+        'order': order,
+        'total': total,
+    })
 
 @login_required
 def add_to_cart(request, product_id):

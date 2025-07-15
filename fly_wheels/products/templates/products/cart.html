@@ -13,7 +13,7 @@
         </li>
         {% endfor %}
     </ul>
-    <p><strong>Total: £{{ order.items.all|sum:"subtotal" }}</strong></p>
+    <p><strong>Total: £{{ total }}</strong></p>
 {% else %}
     <p>Your cart is empty.</p>
 {% endif %}
