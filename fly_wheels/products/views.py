@@ -1,9 +1,23 @@
-from django.shortcuts import render
-from .models import Product
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from .models import Product, Order, CartItem
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    quantity = int(request.POST.get('quantity', 1))
+
+    cart = request.session.get('cart', {})
+
+    if str(product_id) in cart:
+        cart[str(product_id)] += quantity
+    else:
+        cart[str(product_id)] = quantity
+
+    request.session['cart'] = cart
+    messages.success(request, f"Added {product.name} to your cart!")
+    return redirect('view_cart') #redirection
 
 def view_cart(request):
     order = get_object_or_404(Order, user=request.user, is_ordered=False)
