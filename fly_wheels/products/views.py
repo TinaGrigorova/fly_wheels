@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Product, Order, CartItem
+from django.views.decorators.http import require_POST
 
 # Shop Views
 def shop(request):
@@ -47,3 +48,17 @@ def view_cart(request):
     if order:
         total = sum(item.subtotal() for item in order.items.all())
     return render(request, 'products/cart.html', {'order': order, 'total': total})
+
+@require_POST
+@login_required
+def update_cart_item(request, item_id):
+    cart_item = get_object_or_404(CartItem, id=item_id, order__user=request.user, order__is_paid=False)
+    quantity = int(request.POST.get('quantity', 1))
+
+    if quantity > 0:
+        cart_item.quantity = quantity
+        cart_item.save()
+    else:
+        cart_item.delete()
+
+    return redirect('view_cart')
