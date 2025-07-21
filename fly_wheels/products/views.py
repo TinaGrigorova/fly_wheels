@@ -62,3 +62,10 @@ def update_cart_item(request, item_id):
         cart_item.delete()
 
     return redirect('view_cart')
+
+@require_POST
+@login_required
+def remove_cart_item(request, item_id):
+    cart_item = get_object_or_404(CartItem, id=item_id, order__user=request.user, order__is_paid=False)
+    cart_item.delete()
+    return redirect('view_cart')
