@@ -43,4 +43,7 @@ def add_to_cart(request, product_id):
 @login_required
 def view_cart(request):
     order = Order.objects.filter(user=request.user, is_paid=False).first()
-    return render(request, 'products/cart.html', {'order': order})
+    total = 0
+    if order:
+        total = sum(item.subtotal() for item in order.items.all())
+    return render(request, 'products/cart.html', {'order': order, 'total': total})

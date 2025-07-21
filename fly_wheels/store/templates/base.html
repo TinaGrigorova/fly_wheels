@@ -47,9 +47,13 @@
                     <div class="d-flex align-items-center">
     {% if user.is_authenticated %}
         <span class="text-white me-3">Welcome, {{ user.username }}</span>
-        <a class="btn btn-outline-light btn-sm me-2" href="{% url 'view_cart' %}">
-            <i class="bi bi-cart3"></i> Cart
-        </a>
+       <a class="btn btn-outline-light btn-sm me-2" href="{% url 'view_cart' %}">
+    <i class="bi bi-cart3"></i>
+    Cart
+    {% if cart_item_count > 0 %}
+        <span class="badge bg-light text-dark ms-1">{{ cart_item_count }}</span>
+    {% endif %}
+</a>
         <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">Logout</a>
     {% else %}
         <a class="btn btn-outline-light btn-sm me-2" href="{% url 'login' %}">Login</a>
