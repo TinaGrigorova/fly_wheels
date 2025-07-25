@@ -69,3 +69,16 @@ def remove_cart_item(request, item_id):
     cart_item = get_object_or_404(CartItem, id=item_id, order__user=request.user, order__is_paid=False)
     cart_item.delete()
     return redirect('view_cart')
+
+@require_POST
+@login_required
+def checkout(request):
+    order = Order.objects.filter(user=request.user, is_paid=False).first()
+    if order:
+        order.is_paid = True
+        order.save()
+        messages.success(request, "Thank you for your order! 🎉")
+    else:
+        messages.warning(request, "No active order to checkout.")
+    
+    return redirect('shop')  # or use 'checkout_success' if you want a separate page
