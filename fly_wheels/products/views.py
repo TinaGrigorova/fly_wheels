@@ -77,8 +77,11 @@ def checkout(request):
     if order:
         order.is_paid = True
         order.save()
-        messages.success(request, "Thank you for your order! 🎉")
-    else:
-        messages.warning(request, "No active order to checkout.")
-    
-    return redirect('shop')  # or use 'checkout_success' if you want a separate page
+        return redirect('checkout_success')
+    messages.warning(request, "No active order to checkout.")
+    return redirect('shop')
+
+@login_required
+def checkout_success(request):
+    return render(request, 'products/checkout_success.html')
+
