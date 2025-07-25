@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Product, Order, CartItem
 from django.views.decorators.http import require_POST
+from django.core.mail import send_mail
 
 # Shop Views
 def shop(request):
@@ -85,3 +86,23 @@ def checkout(request):
 def checkout_success(request):
     return render(request, 'products/checkout_success.html')
 
+
+@require_POST
+@login_required
+def checkout(request):
+    order = Order.objects.filter(user=request.user, is_paid=False).first()
+    if order:
+        order.is_paid = True
+        order.save()
+
+        # Send confirmation email
+        subject = "Fly Wheels - Order Confirmation"
+        message = f"Hi {request.user.username},\n\nThank you for your order #{order.id}! We’ll process it soon."
+        recipient = request.user.email
+
+        send_mail(subject, message, None, [recipient], fail_silently=False)
+
+        return redirect('checkout_success')
+
+    messages.warning(request, "No active order to checkout.")
+    return redirect('shop')
