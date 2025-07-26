@@ -118,3 +118,9 @@ def checkout(request):
 @login_required
 def checkout_success(request):
     return render(request, 'products/checkout_success.html')
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user, is_paid=True).order_by('-created_at')
+    return render(request, 'products/order_history.html', {'orders': orders})
+

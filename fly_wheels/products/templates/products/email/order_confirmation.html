@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+  <h2>Thank you for your order, {{ user.first_name|default:user.username }}!</h2>
+  <p>We’ve received your order <strong>#{{ order.id }}</strong> and will begin processing it shortly.</p>
+
+  <h4>Order Summary:</h4>
+  <ul>
+    {% for item in order.items.all %}
+      <li>{{ item.quantity }} × {{ item.product.name }} — £{{ item.subtotal }}</li>
+    {% endfor %}
+  </ul>
+
+  <p><strong>Total: £{{ total }}</strong></p>
+  <p>Thank you for shopping with Fly Wheels!</p>
+</body>
+</html>

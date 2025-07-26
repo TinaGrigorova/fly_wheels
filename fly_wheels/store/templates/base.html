@@ -54,6 +54,7 @@
         <span class="badge bg-light text-dark ms-1">{{ cart_item_count }}</span>
     {% endif %}
 </a>
+<a class="btn btn-outline-light btn-sm me-2" href="{% url 'order_history' %}">My Orders</a>
         <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">Logout</a>
     {% else %}
         <a class="btn btn-outline-light btn-sm me-2" href="{% url 'login' %}">Login</a>
