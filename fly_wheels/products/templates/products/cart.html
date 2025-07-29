@@ -46,10 +46,11 @@
         <p class="text-end"><strong>Total: £{{ total }}</strong></p>
 
         <!-- Checkout button -->
-        <form method="POST" action="{% url 'checkout' %}" class="text-end mt-3">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-success">Checkout</button>
-        </form>
+        <form action="{% url 'create_checkout_session' %}" method="POST">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-success">Checkout</button>
+</form>
+
 
     {% else %}
         <p class="text-center">Your cart is empty.</p>
