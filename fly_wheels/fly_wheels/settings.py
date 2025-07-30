@@ -86,15 +86,13 @@ WSGI_APPLICATION = "fly_wheels.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'basil_trump_volt_88481',
-        'USER': 'neondb_owner',
-        'PASSWORD': 'npg_kKCG63pOwxvX',
-        'HOST': 'ep-hidden-leaf-a25emr0f.eu-central-1.aws.neon.tech',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
+
 
 
 # Password validation
