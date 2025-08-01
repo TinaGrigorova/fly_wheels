@@ -7,10 +7,26 @@ class Product(models.Model):
         ('track', 'Track Edition'),
     ]
 
+    BRAND_CHOICES = [
+        ('BBS', 'BBS'),
+        ('OZ Racing', 'OZ Racing'),
+        ('Enkei', 'Enkei'),
+        ('Fox', 'Fox'),
+    ]
+
+    SIZE_CHOICES = [
+        ('17"', '17"'),
+        ('18"', '18"'),
+        ('19"', '19"'),
+        ('20"', '20"'),
+    ]
+
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to='product_images/')
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='Alloy Wheels')
+    brand = models.CharField(max_length=50, choices=BRAND_CHOICES, default='BBS')
+    size = models.CharField(max_length=10, choices=SIZE_CHOICES, default='18"')
 
     def __str__(self):
         return self.name

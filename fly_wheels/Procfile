@@ -1,0 +1,1 @@
+web: gunicorn fly_wheels.wsgi:application
