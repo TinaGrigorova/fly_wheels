@@ -13,4 +13,8 @@ urlpatterns = [
     path('checkout/success/', views.checkout_success, name='checkout_success'),
     path('my-orders/', views.order_history, name='order_history'),
     path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
+    path('brand/<str:brand>/', views.filter_by_brand, name='filter_by_brand'),
+    path('size/<str:size>/', views.filter_by_size, name='filter_by_size'),
+    path('weight/<str:weight>/', views.filter_by_weight, name='filter_by_weight'),
+
 ]

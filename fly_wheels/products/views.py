@@ -41,6 +41,28 @@ def track_edition(request):
         'products': wheels,
     })
 
+def filter_by_brand(request, brand):
+    products = Product.objects.filter(brand=brand)
+    return render(request, 'products/category.html', {
+        'title': f'{brand} Wheels',
+        'products': products
+    })
+
+def filter_by_size(request, size):
+    products = Product.objects.filter(size=size)
+    return render(request, 'products/category.html', {
+        'title': f'{size}" Wheels',
+        'products': products
+    })
+
+def filter_by_weight(request, weight):
+    products = Product.objects.filter(weight=weight)
+    return render(request, 'products/category.html', {
+        'title': f'{weight}kg Wheels',
+        'products': products
+    })
+
+
 
 # ------------------------------
 # Cart Views

@@ -30,19 +30,59 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
 
                         <!-- Categories Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                Categories
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'alloy_wheels' %}">Alloy Wheels</a></li>
-                                <li><a class="dropdown-item" href="{% url 'track_edition' %}">Track Edition</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'shop' %}">View All</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    Categories
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a class="dropdown-item" href="{% url 'alloy_wheels' %}">Alloy Wheels</a></li>
+    <li><a class="dropdown-item" href="{% url 'track_edition' %}">Track Edition</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="{% url 'shop' %}">View All</a></li>
+  </ul>
+</li>
+
+<!-- Brand Dropdown -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="brandDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    Brand
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="brandDropdown">
+    <li><a class="dropdown-item" href="{% url 'filter_by_brand' 'BBS' %}">BBS</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_brand' 'OZ Racing' %}">OZ Racing</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_brand' 'Enkei' %}">Enkei</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_brand' 'Fox' %}">Fox</a></li>
+  </ul>
+</li>
+
+<!-- Size Dropdown -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="sizeDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    Size
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="sizeDropdown">
+    <li><a class="dropdown-item" href="{% url 'filter_by_size' '17\"' %}">17"</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_size' '18\"' %}">18"</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_size' '19\"' %}">19"</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_size' '20\"' %}">20"</a></li>
+  </ul>
+</li>
+
+<!-- Weight Dropdown -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="weightDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    Weight
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="weightDropdown">
+    <li><a class="dropdown-item" href="{% url 'filter_by_weight' '7-10' %}">7-10 kg</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_weight' '10-13' %}">10-13 kg</a></li>
+    <li><a class="dropdown-item" href="{% url 'filter_by_weight' '13-17' %}">13-17 kg</a></li>
+  </ul>
+</li>
 
                     <div class="d-flex align-items-center">
     {% if user.is_authenticated %}
