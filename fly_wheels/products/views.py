@@ -20,7 +20,7 @@ from .models import Product, Order, CartItem
 # ------------------------------
 
 def shop(request):
-    alloy_wheels = Product.objects.filter(category='Alloy Wheels')
+    alloy_wheels = Product.objects.filter(category='alloy')
     track_edition = Product.objects.filter(category='track')
     return render(request, 'products/shop.html', {
         'alloy_wheels': alloy_wheels,
