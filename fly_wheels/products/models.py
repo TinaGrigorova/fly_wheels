@@ -21,12 +21,19 @@ class Product(models.Model):
         ('20"', '20"'),
     ]
 
+    WEIGHT_CHOICES = [
+    ('7-10', '7-10 kg'),
+    ('10-13', '10-13 kg'),
+    ('13-17', '13-17 kg'),
+]
+
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to='product_images/')
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='Alloy Wheels')
     brand = models.CharField(max_length=50, choices=BRAND_CHOICES, default='BBS')
     size = models.CharField(max_length=10, choices=SIZE_CHOICES, default='18"')
+    weight = models.CharField(max_length=10, choices=WEIGHT_CHOICES, default='7-10')
 
     def __str__(self):
         return self.name
