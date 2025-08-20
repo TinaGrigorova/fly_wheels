@@ -28,7 +28,7 @@ def shop(request):
     })
 
 def alloy_wheels(request):
-    wheels = Product.objects.filter(category='Alloy Wheels')
+    wheels = Product.objects.filter(category='alloy')
     return render(request, 'products/category.html', {
         'title': 'Alloy Wheels',
         'products': wheels,
