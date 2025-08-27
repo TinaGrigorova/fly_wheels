@@ -76,3 +76,32 @@ Maintain consistent design with responsiveness in mind
 * Maintain consistent modern design across all pages
 * Test responsiveness on desktop, tablet, and mobile devices
 
+### Target Audience
+
+* Car enthusiasts looking to purchase high-quality alloy and track edition wheels.
+* Motorsport fans seeking performance wheels for track use.
+* Everyday drivers wanting stylish upgrades for their vehicles.
+* Users who value a fast and secure online shopping experience.
+* Mobile users who prefer browsing and purchasing wheels on-the-go.
+* Customers looking for an intuitive filtering system (by brand, size, and style) to quickly find products.
+* Admins and store managers needing a simple way to manage products and orders through the admin panel.
+
+### First time user
+
+* Clear and responsive navigation across all devices to explore categories and products.
+* Visually engaging product cards with wheel images, names, and prices.
+* Concise and informative product descriptions to support decision-making.
+* Straightforward sign-up process with validation and feedback messages.
+* Easy-to-use “Add to Cart” buttons on both product listings and detail pages.
+* Prominent CTAs like “Shop Now” or “Add to Cart” to guide user flow.
+  
+### Registered User
+
+* Secure login with clear feedback messages and access to their account.
+* Ability to browse and filter products by category, brand, size, or style.
+* Add, update, or remove products from their shopping cart.
+* Access to their order history and view order details.
+* Seamless checkout process with secure card payment options.
+* Success messages and confirmation screens after placing an order.
+* Ability to log out and easily log back in on future visits.
+
