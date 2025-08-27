@@ -47,3 +47,8 @@
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
+
+@media (min-width: 992px) {
+  .navbar .navbar-nav.gap-lg-2 > * { margin-right: .25rem; }
+  .navbar .navbar-nav.ms-auto { gap: .5rem; }
+}
