@@ -105,3 +105,16 @@ Maintain consistent design with responsiveness in mind
 * Success messages and confirmation screens after placing an order.
 * Ability to log out and easily log back in on future visits.
 
+### Admin user
+
+* Secure and dedicated login portal with role-based access control to protect sensitive admin operations.
+* Full access to a centralized admin dashboard for managing products, categories, and orders.
+* Ability to add, edit, or remove wheel listings, including names, descriptions, images, and prices.
+* Management of categories (e.g., Alloy Wheels, Track Edition) with options to update or remove.
+* Control over user accounts, including the ability to deactivate or delete accounts when required.
+* Oversight of all orders, with options to view details, update statuses, or cancel when necessary.
+* Ability to handle support issues and maintain data integrity through Django’s built-in admin features.
+
+
+---
+
