@@ -118,3 +118,9 @@ Maintain consistent design with responsiveness in mind
 
 ---
 
+## Desing 
+
+* The Fly Wheels e-commerce website features a sleek and performance-inspired aesthetic that reflects the precision and style of high-quality automotive wheels. A modern and responsive design ensures users across all devices have a seamless shopping experience.
+* The homepage showcases featured products with clean product cards, images, and clear price displays. A streamlined navigation bar allows users to easily browse the Shop, access their Cart, or manage their Account. Product cards feature engaging wheel imagery, responsive hover effects, and intuitive Add to Cart buttons.
+* The shopping cart and checkout forms are styled with Bootstrap, ensuring a consistent look and feel while maintaining clarity and ease of use. The design follows a light-on-dark theme for a modern retail feel, balancing usability with visual appeal.
+* The footer is fixed at the bottom of the page, styled to complement the overall tone of the site, and includes navigation links, copyright information, and brand identity.
