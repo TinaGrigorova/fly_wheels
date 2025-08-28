@@ -124,3 +124,82 @@ Maintain consistent design with responsiveness in mind
 * The homepage showcases featured products with clean product cards, images, and clear price displays. A streamlined navigation bar allows users to easily browse the Shop, access their Cart, or manage their Account. Product cards feature engaging wheel imagery, responsive hover effects, and intuitive Add to Cart buttons.
 * The shopping cart and checkout forms are styled with Bootstrap, ensuring a consistent look and feel while maintaining clarity and ease of use. The design follows a light-on-dark theme for a modern retail feel, balancing usability with visual appeal.
 * The footer is fixed at the bottom of the page, styled to complement the overall tone of the site, and includes navigation links, copyright information, and brand identity.
+
+
+
+### Color Scheme
+![Color Scheme]()
+![Color Scheme]()
+
+### Wireframe
+
+<details>
+<summary> Home Page
+</summary>
+
+
+![Home Page]()
+</details>
+
+<details>
+<summary> Place an Order
+</summary>
+  
+![My Orders Page]()
+</details>
+
+<details>
+<summary> Order History  
+</summary>
+
+![Order History]()
+</details>
+
+<details>
+<summary> Login Page
+</summary>
+
+![Delete Order]()
+</details>
+
+---
+
+### Data Models
+
+1. User Model
+Utilizes Django’s built-in User model, extended with Django Allauth for user registration, authentication, and account management.
+Each User can place multiple Orders, establishing a one-to-many relationship between User and Order.
+2. Product Model
+* Represents individual wheel products available in the shop.
+* Fields include:
+  * name
+  * description
+  * price
+  * category (e.g., Alloy, Track Edition)
+  * brand
+  * size
+  * image
+  * Each product belongs to a single category but can appear in multiple filtered views.
+3. Category Model
+* Used to group wheels by type (e.g., Alloy Wheels, Track Edition).
+* Fields include name and friendly_name for UI display.
+* Each category can contain multiple Products, forming a one-to-many relationship.
+4. Order Model
+* Represents a completed purchase by a user.
+* Fields include:
+  * user (ForeignKey to User model)
+  * order_number
+  * full_name
+  * email
+  * address fields
+  * date
+  * order_total
+  * Each order contains one or more items via the OrderLineItem model.
+5. OrderLineItem Model
+* Represents a product and quantity within a specific order.
+* Fields include:
+  * order (ForeignKey to Order)
+  * product (ForeignKey to Product)
+  * quantity
+  * lineitem_total
+  * Used to calculate the overall order total dynamically.
