@@ -206,8 +206,158 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
 
 
   
- 
 ---
+## Security Features
+
+### User Authentication
+* Implemented using Django Allauth, which handles user registration, login, logout, password reset, and account management securely.
+### Login Decorator
+* Views related to cart, checkout, and order history are protected using Django’s @login_required decorator.
+* This ensures only authenticated users can perform sensitive actions such as placing an order or viewing order history.
+### CSRF Protection
+* Django provides built-in protection against Cross-Site Request Forgery (CSRF) attacks.
+* CSRF tokens are embedded in all forms to ensure only legitimate requests are processed.
+* When a user logs out, their session and CSRF token are invalidated automatically, reducing security risks.
+### Form Validation
+* All checkout and cart update forms use Django’s built-in form validation mechanisms.
+* This includes required fields, input type enforcement, and feedback for invalid or missing data.
+* Additional validation ensures that only valid products and quantities are submitted to the backend.
+### Custom error pages
+* Custom 404 (Page Not Found) and 500 (Internal Server Error) templates are implemented to improve user experience.
+* These pages display friendly messages and provide navigation options back to the homepage or shop.
+
+---
+## Features
+
+* Browse wheels by category, brand, and size.
+* View detailed product pages with images, descriptions, and pricing.
+* Add products to the shopping cart from category or product pages.
+* Update quantities or remove items from the cart.
+* Secure user authentication (sign up, log in, log out).
+* Checkout system with order summary and confirmation.
+* Admin interface to manage products, categories, and orders.
+* Protected views to ensure only logged-in users can check out and view past orders.
+
+
+### Existing Features
+
+* Home Page
+ * Serves as the landing page where users are introduced to the Fly Wheels brand and highlighted products.
+   * Contents:
+   * Hero header with promotional message and CTA
+   * Featured Wheels section with popular products
+   * Clear CTA buttons linking to the shop or specific categories
+   * Mobile-friendly layout
+    
+![Home Page - Upper](path/to/homepage_upper.png)
+
+![Home Page - Lower](path/to/homepage_lower.png)
+
+* Navigation Bar
+  * Present across all pages for seamless navigation.
+  * Contents:
+  * Links to: Home, Shop, Cart, Login, Signup
+  * If logged in: Account menu with "Order History", "Logout"
+
+![Navigation Bar](path/to/navbar.png)
+
+* Products
+  * Displays a selection of top products on the homepage.
+  * Contents:
+  * Product cards with image, name, price
+  * “Add to Cart” button linking directly to cart functionality
+
+![Featured Products](path/to/featured_products.png)
+
+* Shop Page
+  * Shows all available wheels, organized by category.
+  * Contents:
+  * Filtered views for Alloy Wheels and Track Edition
+  * Product cards with image, name, and price
+  * Buttons to view details or add to cart
+   
+![Shop Page](path/to/shop_page.png)
+
+* Product Detail Page
+  * Dedicated page for each wheel product.
+  * Contents:
+  * Larger product image
+  * Full description and price
+  * “Add to Cart” button
+  * Optional technical details or size info
+ 
+  
+   ![Product Detail](path/to/product_detail.png)
+
+  
+* Cart Page
+  * Allows users to view and manage products they intend to purchase.
+  * Contents:
+  * Product name, quantity selector, subtotal
+  * Total price display
+  * “Update” or “Remove” product buttons
+  * Link to checkout
+
+  ![Cart Page](path/to/cart.png)
+
+  
+* Checkout Page
+  * Secure checkout form for completing orders.
+  * Contents:
+  * Address and contact details
+
+![Checkout](path/to/checkout.png)
+
+* Order summary
+  * “Place Order” button
+  * Success message after submission
+    
+![Order](path/to/checkout.png)
+
+* Login Page
+  * Lets returning users sign in securely.
+  * Contents:
+  * Email and password fields
+  * Redirects to home or cart upon login
+
+![Login](path/to/login.png)
+
+* Sign Up Page
+  * Allows new users to register an account.
+  * Contents:
+  * Username, email, password
+  * Redirects and logs in the user upon registration
+
+    
+![Sign Up](path/to/signup.png)
+
+* Order History (My Orders)
+  * Lets users view their previous purchases.
+  * Contents:
+  * Table with product names, dates, total cost
+  * View details of each order
+    
+![Order History](path/to/order_history.png)
+
+* Confirmation Messages
+  * Displays alerts after actions like order placement or cart update.
+    
+![Success Message](path/to/success_message.png)
+
+![Cart Updated](path/to/cart_updated.png)
+
+![Error Message](path/to/error_message.png)
+
+* Footer
+  * Fixed at the bottom of each page.
+  * Contents:
+  * Copyright
+  * Branding and additional nav links
+
+![Footer](path/to/footer.png)
+
+---
+
 ## Deployment and Local Developement
 
 Live deployment can be found on this [View live website here]()
