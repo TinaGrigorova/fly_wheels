@@ -358,6 +358,59 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
 
 ---
 
+## Future Enhancements
+
+- Stripe integration for secure online payments
+- Wishlist functionality so users can save products for later
+- Customer testimonials or reviews for each wheel product
+- Order confirmation emails with receipt and delivery info
+- Stock level notifications (e.g., “Only 2 left!”)
+- User profile page with editable account and shipping info
+- Filter by price range in the Shop view
+- Admin sales dashboard with order statistics and performance metrics
+
+
+---
+
+## 🛠️ Technologies Used
+
+| Type            | Stack                            |
+|-----------------|----------------------------------|
+| Frontend        | HTML5, CSS3, Bootstrap 5         |
+| Backend         | Python 3.12, Django 5.2          |
+| Database        | PostgreSQL                       |
+| Authentication  | Django built-in Auth             |
+| Hosting         | Heroku                           |
+| Version Control | Git, GitHub                      |
+
+---
+### Databases Used
+
+* [ElephantSQL](https://www.elephantsql.com/) - Postgres database
+
+### Frameworks & Libreries
+* Django – A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+* Django Allauth – Integrated for comprehensive user authentication, registration, and account management.
+* Bootstrap 5 – Utilized for responsive design and styling, ensuring a mobile-first and consistent user interface.
+* Heroku – Platform-as-a-Service (PaaS) used for deploying and hosting the web application.
+
+### Programs Used
+
+* [Github](https://github.com/) - Storing the code online
+* [Gitpod](https://www.gitpod.io/) - To write the code.
+* [Heroku](https://www.heroku.com/) - Used as the cloud-based platform to deploy the site.
+* [Google Fonts](https://fonts.google.com/) - Import main font the website.
+* [Figma](https://www.figma.com/) - Used to create wireframes and schemes
+* [Git](https://git-scm.com/) - Version control
+* [Favicon Generator](https://realfavicongenerator.net/) - Used to create a favicon
+* [JSHint](https://jshint.com/) - Used to validate JavaScript
+* [W3C Markup Validation Service](https://validator.w3.org/) - Used to validate HTML
+* [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
+* [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used to validate Python
+* [Colormind](http://colormind.io/) - Color Scheme
+* [Brands Hatch](https://www.brandshatch.co.uk), [Silverstone](https://www.silverstone.co.uk) and [Lydden Hill](https://lyddenhill.co.uk) - Additional Images 
+
+---
 ## Deployment and Local Developement
 
 Live deployment can be found on this [View live website here]()
