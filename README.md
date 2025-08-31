@@ -481,3 +481,25 @@ Live deployment can be found on this [View live website here]()
 4. Click 'Open App' to view the deployed live site.
 
 ---
+
+## 🧪 Testing
+
+Testing was performed manually and via Django’s built-in testing tools.
+
+- Form validation for date and time
+- Duplicate booking prevention
+- Login/logout/signup processes
+- Mobile responsiveness
+- Booking updates/cancellation
+
+➡️ See full documentation: [`TESTING.md`](TESTING.md)
+
+
+### Content
+
+* All of the content is imaginary and written by the developer, me, Tina Grigorova.
+
+### Acknowledgments
+
+* I would like to thank my mentor for support and feedback throughout this project, Mitko Bachvarov.
+* I would also like to extend my appreciation to the Slack community for their continuous engagement and willingness to share knowledge. The collaborative environment provided a platform for learning, troubleshooting, and gaining inspiration from fellow developers.
