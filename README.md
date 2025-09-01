@@ -249,7 +249,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
    * Clear CTA buttons linking to the shop or specific categories
    * Mobile-friendly layout
     
-![Home Page - Upper](path/to/homepage_upper.png)
+![Home Page - Upper](/fly_wheels/media/images/readme_images/main_page.png)
 
 ![Home Page - Lower](path/to/homepage_lower.png)
 
@@ -259,7 +259,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Links to: Home, Shop, Cart, Login, Signup
   * If logged in: Account menu with "Order History", "Logout"
 
-![Navigation Bar](path/to/navbar.png)
+![Navigation Bar](/fly_wheels/media/images/readme_images/navbar.png)
 
 * Products
   * Displays a selection of top products on the homepage.
@@ -267,7 +267,8 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Product cards with image, name, price
   * “Add to Cart” button linking directly to cart functionality
 
-![Featured Products](path/to/featured_products.png)
+![Featured Products](/fly_wheels/media/images/readme_images/shop_upper.png)
+![Featured Products](/fly_wheels/media/images/readme_images/shop_lower.png)
 
 * Shop Page
   * Shows all available wheels, organized by category.
@@ -276,7 +277,8 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Product cards with image, name, and price
   * Buttons to view details or add to cart
    
-![Shop Page](path/to/shop_page.png)
+![Shop Page](/fly_wheels/media/images/readme_images/alloy_wheels_page.png)
+![Shop Page](/fly_wheels/media/images/readme_images/track_wheels_page.png)
 
 * Product Detail Page
   * Dedicated page for each wheel product.
@@ -286,9 +288,16 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * “Add to Cart” button
   * Optional technical details or size info
  
-  
-   ![Product Detail](path/to/product_detail.png)
+  * Brand Page 
+   ![Product Detail](/fly_wheels/media/images/readme_images/brand_page.png)
+   ![Product Detail](/fly_wheels/media/images/readme_images/brand_page1.png)
 
+  * Size Page
+   ![Product Detail](/fly_wheels/media/images/readme_images/size_page.png)
+
+  * Weight Page  
+   ![Product Detail](/fly_wheels/media/images/readme_images/weight_page.png)
+  
   
 * Cart Page
   * Allows users to view and manage products they intend to purchase.
@@ -298,21 +307,24 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * “Update” or “Remove” product buttons
   * Link to checkout
 
-  ![Cart Page](path/to/cart.png)
+  ![Cart Page](/fly_wheels/media/images/readme_images/cart_page.png)
 
   
 * Checkout Page
   * Secure checkout form for completing orders.
   * Contents:
   * Address and contact details
+  * Payment details
+  * Payment Confirmation
 
-![Checkout](path/to/checkout.png)
 
-* Order summary
-  * “Place Order” button
+![Checkout](/fly_wheels/media/images/readme_images/payment_page.png)
+![Checkout](/fly_wheels/media/images/readme_images/payment_confirmation.png)
+
+* Order summary - Confirmation
   * Success message after submission
     
-![Order](path/to/checkout.png)
+![Order](/fly_wheels/media/images/readme_images/order_confirmation_page.png)
 
 * Login Page
   * Lets returning users sign in securely.
@@ -320,7 +332,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Email and password fields
   * Redirects to home or cart upon login
 
-![Login](path/to/login.png)
+![Login](/fly_wheels/media/images/readme_images/login_page.png)
 
 * Sign Up Page
   * Allows new users to register an account.
@@ -329,7 +341,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Redirects and logs in the user upon registration
 
     
-![Sign Up](path/to/signup.png)
+![Sign Up](/fly_wheels/media/images/readme_images/singup_page.png)
 
 * Order History (My Orders)
   * Lets users view their previous purchases.
@@ -337,7 +349,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Table with product names, dates, total cost
   * View details of each order
     
-![Order History](path/to/order_history.png)
+![Order History](/fly_wheels/media/images/readme_images/my_orders_page.png)
 
 * Confirmation Messages
   * Displays alerts after actions like order placement or cart update.
@@ -354,7 +366,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
   * Copyright
   * Branding and additional nav links
 
-![Footer](path/to/footer.png)
+![Footer](/fly_wheels/media/images/readme_images/footer.png)
 
 ---
 
