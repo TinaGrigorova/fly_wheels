@@ -9,6 +9,7 @@ import stripe
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from store.cart import Cart
+from decimal import Decimal
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -187,3 +188,15 @@ def create_checkout_session(request):
 def order_history(request):
     orders = Order.objects.filter(user=request.user, is_paid=True).order_by('-created_at')
     return render(request, 'products/order_history.html', {'orders': orders})
+
+def view_cart(request):
+    order = Order.objects.filter(user=request.user, is_paid=False).first()
+    items = order.items.select_related("product") if order else []
+    total = sum((i.subtotal for i in items), Decimal("0.00"))
+
+  
+    return render(request, "products/cart.html", {
+        "order": order,
+        "items": items,
+        "total": total,
+    })

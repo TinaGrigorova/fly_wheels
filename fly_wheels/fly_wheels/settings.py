@@ -40,21 +40,17 @@ SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = [
     "flywheels-391941410acb.herokuapp.com",
-    "localhost",
-    "127.0.0.1",
+    "localhost", "127.0.0.1",
+    ".app.github.dev",            
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://flywheels-391941410acb.herokuapp.com",
-    "http://localhost:8000",
-    "https://localhost:8000",
-    "http://127.0.0.1:8000",
-    "https://127.0.0.1:8000",
+    "http://localhost:8000", "https://localhost:8000",
+    "http://127.0.0.1:8000", "https://127.0.0.1:8000",
+    "https://*.app.github.dev",  
+
 ]
-
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -103,7 +99,6 @@ WSGI_APPLICATION = "fly_wheels.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -116,7 +111,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -135,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
@@ -147,7 +140,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
 
 STATIC_URL = '/static/'
 
@@ -156,7 +149,6 @@ STATICFILES_DIRS = [
 ]
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
