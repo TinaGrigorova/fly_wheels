@@ -93,7 +93,7 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     class Meta:
-        unique_together = ("order", "product") 
+        unique_together = ("order", "product")  
 
     def __str__(self) -> str:
         return f"{self.quantity} × {self.product.name}"
