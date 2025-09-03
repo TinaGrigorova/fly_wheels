@@ -1,1 +1,1 @@
-web: gunicorn fly_wheels.wsgi:application
+web: gunicorn fly_wheels.wsgi
