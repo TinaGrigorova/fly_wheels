@@ -122,8 +122,8 @@ def remove_cart_item(request, item_id):
 # ------------------------------
 
 @login_required
+@login_required
 def create_checkout_session(request):
-    # Build absolute URLs that work on Heroku/Codespaces behind a proxy
     base = request.build_absolute_uri("/").rstrip("/")
     success_url = base + reverse("checkout_success") + "?session_id={CHECKOUT_SESSION_ID}"
     cancel_url  = base + reverse("view_cart")
@@ -133,12 +133,11 @@ def create_checkout_session(request):
         messages.info(request, "Your cart is empty.")
         return redirect("view_cart")
 
-    # One Stripe line item per cart row (use Product.price_pence helper -> int)
     line_items = [{
         "price_data": {
             "currency": "gbp",
             "product_data": {"name": i.product.name},
-            "unit_amount": int(i.product.price_pence),
+            "unit_amount": int(i.product.price_pence), 
         },
         "quantity": i.quantity,
     } for i in order.items.select_related("product")]
@@ -151,7 +150,6 @@ def create_checkout_session(request):
         metadata={"order_id": str(order.id)},
     )
     return redirect(session.url, code=303)
-
 @login_required
 @require_GET
 def checkout_success(request):

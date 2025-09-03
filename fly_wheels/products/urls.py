@@ -17,4 +17,5 @@ urlpatterns = [
     path('size/<str:size>/', views.filter_by_size, name='filter_by_size'),
     path('weight/<str:weight>/', views.filter_by_weight, name='filter_by_weight'),
 
+
 ]
