@@ -1,1 +1,1 @@
-web: gunicorn fly_wheels.wsgi
+web: gunicorn --chdir fly_wheels fly_wheels.wsgi:application
