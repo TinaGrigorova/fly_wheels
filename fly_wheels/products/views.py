@@ -50,7 +50,7 @@ def filter_by_brand(request, brand):
 def filter_by_size(request, size):
     products = Product.objects.filter(size=size)
     return render(request, "products/category.html", {
-        "title": f"{size} Wheels",   # size already includes the quote (e.g. 18")
+        "title": f"{size} Wheels",
         "products": products,
     })
 
@@ -85,7 +85,7 @@ def add_to_cart(request, product_id):
 def view_cart(request):
     order = Order.objects.filter(user=request.user, is_paid=False).first()
     items = order.items.select_related("product") if order else []
-    # NOTE: subtotal is a PROPERTY now; do not call it
+    # NOTE: subtotal is a PROPERTY
     total = sum((i.subtotal for i in items), D("0.00"))
     return render(request, "products/cart.html", {
         "order": order,
@@ -150,6 +150,7 @@ def create_checkout_session(request):
         metadata={"order_id": str(order.id)},
     )
     return redirect(session.url, code=303)
+
 @login_required
 @require_GET
 def checkout_success(request):
@@ -157,28 +158,24 @@ def checkout_success(request):
     if not session_id:
         return redirect("shop")
 
-    # Best-effort: verify & pull order_id; never 500 if Stripe env not set
+    order = None
     try:
         s = stripe.checkout.Session.retrieve(session_id)
-        order_id = s.metadata.get("order_id")
+        order_id = (s.metadata or {}).get("order_id")
     except Exception:
         order_id = None
 
     if order_id:
-        order = get_object_or_404(Order, id=order_id, user=request.user)
-        if not order.is_paid:
-            order.is_paid = True
-            order.paid_at = timezone.now()
-            order.save()
-    else:
-        # Fallback: close the user's open order
-        Order.objects.filter(user=request.user, is_paid=False).update(
-            is_paid=True, paid_at=timezone.now()
-        )
-
-    messages.success(request, "Thanks! Your order is confirmed.")
-    return redirect("home")  # fast redirect instead of a blank page
-
+        try:
+            order = Order.objects.get(id=order_id)
+            if not order.is_paid:
+                order.is_paid = True
+                order.paid_at = timezone.now()
+                order.save()
+        except Order.DoesNotExist:
+            pass
+        
+    return render(request, "checkout_success.html", {"order": order})
 
 # ------------------------------
 # Orders
