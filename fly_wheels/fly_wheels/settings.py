@@ -26,6 +26,31 @@ SECRET_KEY = "django-insecure-28fyhi=&x0yhm+43gzpsfgg-g45a!^gvgy+b*s5@z15=7i)tn#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEBUG = os.environ.get("DEBUG", "True") == "True"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+if DEBUG:
+    # Dev: Mailtrap
+    EMAIL_HOST = os.environ.get("EMAIL_HOST", "sandbox.smtp.mailtrap.io")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 2525))
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Fly Wheels <orders@yourdomain.com>")
+else:
+    # Prod: Gmail (or other real SMTP)
+    EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]          # your Gmail address
+    EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]  # Google App Password
+    DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER)
+
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Fly Wheels <orders@yourdomain.com>")
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
@@ -163,7 +188,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = "Fly Wheels <orders@yourdomain.com>"
 
 
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')

@@ -1,10 +1,9 @@
 from django.urls import path
 from . import views
-from .views import create_checkout_session
 
 urlpatterns = [
     path('', views.shop, name='shop'),
-    path('alloy/', views.alloy_wheels, name='alloy_wheels'),  
+    path('alloy/', views.alloy_wheels, name='alloy_wheels'),
     path('track/', views.track_edition, name='track_edition'),
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('cart/', views.view_cart, name='view_cart'),
@@ -16,6 +15,4 @@ urlpatterns = [
     path('brand/<str:brand>/', views.filter_by_brand, name='filter_by_brand'),
     path('size/<str:size>/', views.filter_by_size, name='filter_by_size'),
     path('weight/<str:weight>/', views.filter_by_weight, name='filter_by_weight'),
-
-
 ]

@@ -17,7 +17,7 @@
             <small>£{{ item.product.price|floatformat:2 }} each</small>
           </div>
 
-          <!-- Middle: Qty + Update + Remove  -->
+          <!-- Middle: Qty + Update + Remove -->
           <div class="col-md-4 d-flex justify-content-center align-items-center gap-2">
             <form method="POST" action="{% url 'update_cart_item' item.id %}" class="d-flex align-items-center gap-2">
               {% csrf_token %}
@@ -46,11 +46,21 @@
       {% endfor %}
     </ul>
 
+    <!-- Total -->
     <p class="text-end"><strong>Total: £{{ total|floatformat:2 }}</strong></p>
 
-    <form action="{% url 'create_checkout_session' %}" method="POST" class="text-end">
+    <!-- Checkout: includes marketing opt-in -->
+    <form action="{% url 'create_checkout_session' %}" method="POST" class="d-flex justify-content-between align-items-center flex-wrap gap-2">
       {% csrf_token %}
-      <button type="submit" class="btn btn-success">Checkout</button>
+      <a href="{% url 'shop' %}" class="btn btn-outline-secondary">Continue Shopping</a>
+
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="opt_in" id="opt-in" checked>
+          <label class="form-check-label" for="opt-in">Email me news and offers</label>
+        </div>
+        <button type="submit" class="btn btn-success">Checkout</button>
+      </div>
     </form>
 
   {% else %}
