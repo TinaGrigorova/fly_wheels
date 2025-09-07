@@ -8,3 +8,9 @@ node_modules/
 .github/
 cloudinary_python.txt
 .venv.venv/
+*.pyc
+*.pyo
+*.pyd
+*.DS_Store
+.env
+*.sqlite3
