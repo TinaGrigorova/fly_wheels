@@ -52,3 +52,12 @@
   .navbar .navbar-nav.gap-lg-2 > * { margin-right: .25rem; }
   .navbar .navbar-nav.ms-auto { gap: .5rem; }
 }
+
+.toast-container { z-index: 9999; }
+@media (max-width: 576px) {
+  .toast-container {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}

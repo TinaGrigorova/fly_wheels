@@ -12,7 +12,11 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="mb-1">{{ product.brand }} • {{ product.size }}</p>
-                    <p class="card-text">£{{ product.price }}</p>
+                    <p class="card-text mb-2">
+  <span class="fw-semibold">£{{ product.price|floatformat:2 }}</span>
+  <small class="text-muted">per item</small>
+</p>
+
                     <form method="POST" action="{% url 'add_to_cart' product.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="quantity" value="1">
