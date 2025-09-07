@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Contact | Fly Wheels{% endblock %}
+{% block header_title %}Contact us{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-xl-7">
+    <h2 class="mb-4">Send us a message</h2>
+
+    <form action="{% url 'contact-submit' %}" method="post" class="row g-3">
+      {% csrf_token %}
+      <div class="col-md-6">
+        <input name="name" class="form-control" placeholder="Your name" required>
+      </div>
+      <div class="col-md-6">
+        <input type="email" name="email" class="form-control" placeholder="Your email" required>
+      </div>
+      <div class="col-12">
+        <textarea name="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary">Send</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

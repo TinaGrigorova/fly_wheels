@@ -12,7 +12,7 @@ from django.utils.html import strip_tags
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_GET, require_POST
 from accounts.utils.mailchimp import subscribe as mc_subscribe
-
+from core.emailing import send_contact_email
 import stripe
 
 from .models import Product, Order, CartItem
@@ -285,3 +285,22 @@ def checkout_success(request):
 def order_history(request):
     orders = Order.objects.filter(user=request.user, is_paid=True).order_by("-created_at")
     return render(request, "products/order_history.html", {"orders": orders})
+
+# ------------------------------
+# Emails 
+# ------------------------------
+
+
+@require_POST
+def contact_submit(request):
+    name = request.POST.get("name","").strip()
+    email = request.POST.get("email","").strip()
+    msg = request.POST.get("message","").strip()
+
+    if not (name and email and msg):
+        messages.error(request, "Please fill in all fields.")
+        return redirect(request.META.get("HTTP_REFERER", "home"))
+
+    send_contact_email(name, email, msg)
+    messages.success(request, "Thanks! Your message has been sent.")
+    return redirect(request.META.get("HTTP_REFERER", "home"))
