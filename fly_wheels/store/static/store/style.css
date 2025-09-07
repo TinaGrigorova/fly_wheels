@@ -67,3 +67,14 @@
   object-fit: contain;
 }
 
+.product-card { font-size: .95rem; }
+.product-card .card-body { padding: .75rem; }
+.product-card .card-title { font-size: 1rem; }
+.product-card .card-img-top {
+  height: 160px;            /* tweak 140–180px to taste */
+  object-fit: contain;      /* keep wheel images tidy */
+  padding: .5rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.product-card .btn { padding: .375rem .5rem; font-size: .875rem; }

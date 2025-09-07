@@ -1,17 +1,63 @@
 {% extends "base.html" %}
-{% block title %}{{ title }} - Fly Wheels{% endblock %}
+{% load static %}
+{% block title %}{{ title }} | Fly Wheels{% endblock %}
+{% block header_title %}{{ title }}{% endblock %}
+{% block header_subtitle %}Browse {{ title }}{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-  <h3 class="text-center mb-4">{{ title }}</h3>
-
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    {% for p in products %}
+<div class="container my-5">
+  <div class="row row-cols-1 row-cols-lg-2 g-4">
+    {% for product in products %}
       <div class="col">
-        {% include "products/partials/_product_card.html" with p=p %}
+        <div class="card product-card h-100 shadow-sm">
+          <div class="row g-0">
+            <div class="col-md-5 p-3 d-flex align-items-center justify-content-center">
+              {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid product-image" alt="{{ product.name }}">
+              {% else %}
+                <img src="{% static 'img/placeholder-450x300.png' %}" class="img-fluid product-image" alt="{{ product.name }}">
+              {% endif %}
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title mb-1">{{ product.name }}</h5>
+                <p class="text-muted mb-3">{{ product.brand }} • {{ product.size }}</p>
+
+                <ul class="list-unstyled small product-spec mb-3">
+                  <li><strong>Type:</strong> {{ product.get_category_display }}</li>
+                  <li><strong>Weight:</strong> {{ product.weight }}</li>
+                  {% if product.material %}<li><strong>Material:</strong> {{ product.material }}</li>{% endif %}
+                  <li><strong>Quantity:</strong> {{ product.pack_label }}</li>
+                  {% if product.delivery_time %}<li><strong>Delivery:</strong> {{ product.delivery_time }}</li>{% endif %}
+                </ul>
+
+                {% if product.description_long %}
+                  <p class="small text-muted mb-3">{{ product.description_long|truncatechars:140 }}</p>
+                {% endif %}
+
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <span class="fw-semibold">£{{ product.price|floatformat:2 }}</span>
+                    <small class="text-muted">per item</small>
+                  </div>
+                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="redirect_url"
+                           value="{{ request.path }}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}">
+                    <button type="submit" class="btn btn-outline-dark btn-sm">Add to Cart</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     {% empty %}
-      <p class="text-center text-muted">No products found.</p>
+      <div class="col-12">
+        <div class="alert alert-light border text-center">No products found.</div>
+      </div>
     {% endfor %}
   </div>
 </div>
