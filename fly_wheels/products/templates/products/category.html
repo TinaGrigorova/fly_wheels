@@ -1,53 +1,18 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block title %}{{ title }} | Fly Wheels{% endblock %}
-{% block header_title %}{{ title }}{% endblock %}
-{% block header_subtitle %}Browse {{ title }}{% endblock %}
+{% block title %}{{ title }} - Fly Wheels{% endblock %}
 
 {% block content %}
-<h2 class="text-center mb-4">{{ title }}</h2>
+<div class="container py-5">
+  <h3 class="text-center mb-4">{{ title }}</h3>
 
-<div class="row justify-content-center">
-  {% if products %}
-    {% for product in products %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          {% if product.image %}
-            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-          {% else %}
-            <img src="{% static 'img/placeholder-450x300.png' %}" class="card-img-top" alt="{{ product.name }}">
-          {% endif %}
-
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="mb-1">{{ product.brand }}{% if product.size %} • {{ product.size }}{% endif %}</p>
-            <p class="card-text mb-2">
-  <span class="fw-semibold">£{{ product.price|floatformat:2 }}</span>
-  <small class="text-muted">per item</small>
-</p>
-
-
-            <form method="POST" action="{% url 'add_to_cart' product.id %}">
-              {% csrf_token %}
-              <input type="hidden" name="quantity" value="1">
-              {# send user back to the same filtered page (incl. query string) #}
-              <input type="hidden" name="redirect_url"
-                     value="{{ request.path }}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}">
-              <button type="submit" class="btn btn-outline-dark w-100">
-                Add to Cart
-              </button>
-            </form>
-          </div>
-        </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for p in products %}
+      <div class="col">
+        {% include "products/partials/_product_card.html" with p=p %}
       </div>
+    {% empty %}
+      <p class="text-center text-muted">No products found.</p>
     {% endfor %}
-  {% else %}
-    <div class="col-12">
-      <div class="alert alert-light border text-center">
-        No products found in {{ title }}.
-      </div>
-    </div>
-  {% endif %}
+  </div>
 </div>
 {% endblock %}

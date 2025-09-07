@@ -1,52 +1,32 @@
 {% extends "base.html" %}
-{% load static %}
+{% block title %}Shop - Fly Wheels{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Alloy Wheels</h2>
-    <div class="row">
-        {% for product in alloy_wheels %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="mb-1">{{ product.brand }} • {{ product.size }}</p>
-                    <p class="card-text mb-2">
-  <span class="fw-semibold">£{{ product.price|floatformat:2 }}</span>
-  <small class="text-muted">per item</small>
-</p>
+<div class="container py-5">
 
-                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+  <h3 class="text-center mb-4">Alloy Wheels</h3>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for p in alloy_wheels %}
+      <div class="col">
+        {% include "products/partials/_product_card.html" with p=p %}
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No products found.</p>
+    {% endfor %}
+  </div>
 
-    <h2 class="text-center my-4">Track Edition</h2>
-    <div class="row">
-        {% for product in track_edition %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="mb-1">{{ product.brand }} • {{ product.size }}</p>
-                    <p class="card-text">£{{ product.price }}</p>
-                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">Track Edition</h3>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for p in track_edition %}
+      <div class="col">
+        {% include "products/partials/_product_card.html" with p=p %}
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No products found.</p>
+    {% endfor %}
+  </div>
+
 </div>
 {% endblock %}

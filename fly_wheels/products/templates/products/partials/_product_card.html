@@ -1,0 +1,63 @@
+{% comment %} Reusable product card. Pass as: {% include ... with p=product %} {% endcomment %}
+<div class="card h-100 shadow-sm product-card">
+  <div class="ratio ratio-1x1 bg-white">
+    {% if p.image %}
+      <img src="{{ p.image.url }}" alt="{{ p.name }}" class="card-img-top p-3 product-card-img">
+    {% endif %}
+  </div>
+
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title mb-1">{{ p.name }}</h5>
+    <div class="text-muted small mb-2">
+      {% if p.brand %}{{ p.brand }}{% endif %}
+      {% if p.size %} • {{ p.size }}{% endif %}
+      {% if p.weight %} • {{ p.weight }} kg{% endif %}
+    </div>
+
+    <dl class="row small mb-2">
+      <dt class="col-5">Type</dt>
+      <dd class="col-7">{{ p.get_category_display|default:p.category }}</dd>
+
+      {% if p.material %}
+        <dt class="col-5">Material</dt>
+        <dd class="col-7">{{ p.material }}</dd>
+      {% endif %}
+
+      <dt class="col-5">Pack</dt>
+      <dd class="col-7">
+        {% if p.pack_size %}{{ p.pack_size }}{% else %}1{% endif %}
+      </dd>
+
+      {% if p.delivery_estimate %}
+        <dt class="col-5">Delivery</dt>
+        <dd class="col-7">{{ p.delivery_estimate }}</dd>
+      {% endif %}
+    </dl>
+
+    <div class="mt-auto">
+      <div class="d-flex align-items-baseline justify-content-between">
+        <div>
+          <span class="fw-semibold">£{{ p.price }}</span>
+          {% if p.compare_at_price %}
+            <small class="text-muted text-decoration-line-through ms-1">£{{ p.compare_at_price }}</small>
+          {% endif %}
+          <div class="small text-muted">
+            {% if p.pack_size and p.pack_size|add:'0' > 1 %}per pack{% else %}per item{% endif %}
+          </div>
+        </div>
+
+        {% if p.pack_size and p.pack_size|add:'0' > 1 %}
+          <span class="badge bg-secondary">Pack of {{ p.pack_size }}</span>
+        {% endif %}
+      </div>
+
+      <form method="post" action="{% url 'add_to_cart' p.id %}" class="mt-3 d-flex gap-2">
+        {% csrf_token %}
+        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
+        <input type="number" name="quantity" value="1" min="1"
+               class="form-control form-control-sm" style="max-width: 90px;">
+        <button class="btn btn-dark btn-sm flex-grow-1">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>

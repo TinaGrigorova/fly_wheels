@@ -41,6 +41,9 @@ class Product(models.Model):
     brand = models.CharField(max_length=50, choices=BRAND_CHOICES, default="BBS")
     size = models.CharField(max_length=10, choices=SIZE_CHOICES, default='18"')
     weight = models.CharField(max_length=10, choices=WEIGHT_CHOICES, default="7-10")
+    pack_size = models.PositiveSmallIntegerField(default=1, help_text="Items per pack (1 or 4)")
+    material = models.CharField(max_length=60, blank=True)
+    delivery_estimate = models.CharField(max_length=60, blank=True)  # e.g., "2–4 business days"
 
     in_stock = models.BooleanField(default=True)
 
