@@ -164,49 +164,86 @@ Maintain consistent design with responsiveness in mind
 
 ---
 
-### Data Models
+## Data Models
 
 1. User Model
-Utilizes Django’s built-in User model, extended with Django Allauth for user registration, authentication, and account management.
-Each User can place multiple Orders, establishing a one-to-many relationship between User and Order.
-2. Product Model
-* Represents individual wheel products available in the shop.
-* Fields include:
-  * name
-  * description
-  * price
-  * category (e.g., Alloy, Track Edition)
-  * brand
-  * size
-  * image
-  * Each product belongs to a single category but can appear in multiple filtered views.
-3. Category Model
-* Used to group wheels by type (e.g., Alloy Wheels, Track Edition).
-* Fields include name and friendly_name for UI display.
-* Each category can contain multiple Products, forming a one-to-many relationship.
-4. Order Model
-* Represents a completed purchase by a user.
-* Fields include:
-  * user (ForeignKey to User model)
-  * order_number
-  * full_name
-  * email
-  * address fields
-  * date
-  * order_total
-  * Each order contains one or more items via the OrderLineItem model.
-5. OrderLineItem Model
-* Represents a product and quantity within a specific order.
-* Fields include:
-  * order (ForeignKey to Order)
-  * product (ForeignKey to Product)
-  * quantity
-  * lineitem_total
-  * Used to calculate the overall order total dynamically.
+ * Uses Django’s built-in User (with Django Allauth for sign-up, login, password reset, etc.).
+ * Relationships
+   * One User → many Orders.
+   * Many-to-many between User and Product through Wishlist (see Wishlist model).
+
+3. Product Model
+ * Represents each wheel available in the shop.
+ * Key fields
+   * name
+   * slug
+   * description
+   * brand
+   * material
+   * size (and/or size dimensions)
+   * weight (if present)
+   * price
+   * discount_percentage (if on sale)
+   * quantity_in_stock
+   * is_top_product (for homepage/featured)
+   * delivery_time
+   * image / image_url
+   * category (FK → Category)
+ * Notes
+   * A Product belongs to exactly one Category but can show up in multiple filtered views (brand/size/weight, etc.).
+
+4. Category Model
+ * Groups wheels by type (e.g., Alloy Wheels, Track Edition).
+ * Fields
+   * name
+   * slug (or friendly_name if you’re exposing a UI-friendly label)
+* Relationship
+   * One Category → many Products.
+
+5. Order Model
+ * Captures a completed purchase.
+ * Key fields
+   * user (FK → User, nullable for guest checkouts if you allow them)
+   * order_number (UUID or unique string)
+   * full_name
+   * email
+   * Address fields: phone_number, address1, address2, city, county, postal_code
+   * Monetary fields: delivery, total, grand_total
+   * created (date/datetime)
+   * Payment fields: stripe_pid, paid (boolean)
+* Relationship
+   * One Order → many OrderLineItems.
+     
+6. OrderLineItem Model
+ * A single product line within an order.
+ * Fields
+   * order (FK → Order)
+   * product (FK → Product)
+   * price (unit price captured at time of order)
+   * quantity
+   * lineitem_total (calculated = price * quantity)
+ * Notes
+   * Order totals are computed from line items + delivery.
+     
+7 . Contact Model
+ * Stores messages sent from the contact form (so you have a record even if email delivery fails).
+ * Fields
+   * name
+   * email
+   * subject
+   * message (text)
+   * created_at (date/datetime)
+     
+8. Newsletter Model
+ * Tracks newsletter opt-ins/opt-outs.
+ * Fields
+   * email
+   * is_subscribed (boolean)
+   * date_subscribed
+   * date_unsubscribed (nullable)
 
 
-  
----
+--- 
 ## Security Features
 
 ### User Authentication
@@ -230,7 +267,7 @@ Each User can place multiple Orders, establishing a one-to-many relationship bet
 ## Features
 
 * Browse wheels by category, brand, and size.
-* View detailed product pages with images, descriptions, and pricing.
+* View detailed product pages with images, descriptions, pricing, delivery, material etc.
 * Add products to the shopping cart from category or product pages.
 * Update quantities or remove items from the cart.
 * Secure user authentication (sign up, log in, log out).
