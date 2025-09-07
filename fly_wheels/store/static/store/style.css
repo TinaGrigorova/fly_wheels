@@ -67,6 +67,9 @@
   object-fit: contain;
 }
 
+
+
+.badge-pack   { box-shadow: 0 2px 6px rgba(0,0,0,.12); }
 .product-card { font-size: .95rem; }
 .product-card .card-body { padding: .75rem; }
 .product-card .card-title { font-size: 1rem; }

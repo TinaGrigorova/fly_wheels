@@ -44,6 +44,7 @@ class Product(models.Model):
     pack_size = models.PositiveSmallIntegerField(default=1, help_text="Items per pack (1 or 4)")
     material = models.CharField(max_length=60, blank=True)
     delivery_estimate = models.CharField(max_length=60, blank=True)  # e.g., "2–4 business days"
+    description_long = models.TextField(blank=True)
 
     in_stock = models.BooleanField(default=True)
 
@@ -64,6 +65,25 @@ class Product(models.Model):
     @property
     def on_sale(self) -> bool:
         return bool(self.compare_at_price and self.compare_at_price > self.price)
+    
+    @property
+    def is_pack(self) -> bool:
+        """True if the product is sold in packs (pack_size > 1)."""
+        try:
+            return (self.pack_size or 1) > 1
+        except Exception:
+            return False
+
+    @property
+    def pack_label(self) -> str:
+        """Human label used in templates."""
+        return f"Pack of {self.pack_size}" if self.is_pack else "Single item"
+
+    @property
+    def per_unit_label(self) -> str:
+        """Price context shown next to the amount."""
+        return "per pack" if self.is_pack else "per item"
+
 
 
 class Order(models.Model):
@@ -105,3 +125,4 @@ class CartItem(models.Model):
     @property
     def subtotal(self) -> Decimal:
         return (self.product.price or Decimal("0.00")) * self.quantity
+
