@@ -179,53 +179,44 @@
 
   </div> <!-- End of flex-grow-1 -->
 
- <!-- Footer -->
+<!-- Footer -->
 <footer class="py-5 bg-dark text-white-50">
   <div class="container">
     <div class="row gy-3 align-items-center">
+
       <!-- left: copyright -->
       <div class="col-md-4 text-center text-md-start">
         <small>© Fly Wheels {{ now|date:"Y" }}</small>
       </div>
 
-      <!-- center: social links (external) -->
+      <!-- center: social links -->
       <div class="col-md-4 text-center">
         <a href="https://www.facebook.com/yourpage"
-           class="text-white-50 me-3"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Facebook" title="Facebook">
-          <i class="bi bi-facebook fs-5"></i>
-        </a>
+           class="text-white-50 me-3" target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook" title="Facebook"><i class="bi bi-facebook fs-5"></i></a>
         <a href="https://www.instagram.com/yourpage"
-           class="text-white-50 me-3"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Instagram" title="Instagram">
-          <i class="bi bi-instagram fs-5"></i>
-        </a>
+           class="text-white-50 me-3" target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram" title="Instagram"><i class="bi bi-instagram fs-5"></i></a>
         <a href="https://x.com/yourpage"
-           class="text-white-50"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="X (Twitter)" title="X (Twitter)">
-          <i class="bi bi-twitter-x fs-5"></i>
-        </a>
+           class="text-white-50" target="_blank" rel="noopener noreferrer"
+           aria-label="X (Twitter)" title="X (Twitter)"><i class="bi bi-twitter-x fs-5"></i></a>
       </div>
+
+      <!-- right: newsletter -->
+      <div class="col-md-4 d-flex justify-content-center justify-content-md-end">
+        <form action="{% url 'newsletter-subscribe' %}" method="post"
+              class="d-flex gap-2">
+          {% csrf_token %}
+          <input type="email" name="email"
+                 class="form-control form-control-sm w-auto"
+                 placeholder="Your email" required>
+          <button class="btn btn-warning btn-sm">Subscribe</button>
+        </form>
       </div>
+
     </div>
   </div>
-  <form action="{% url 'newsletter-subscribe' %}" method="post" class="row g-2 justify-content-center">
-  {% csrf_token %}
-  <div class="col-auto">
-    <input type="email" name="email" class="form-control" placeholder="Your email" required>
-  </div>
-  <div class="col-auto">
-    <button class="btn btn-warning">Subscribe</button>
-  </div>
-</form>
 </footer>
-
 
   <!-- JS -->
   <script src="{% static 'store/js/messages.js' %}"></script>
