@@ -50,3 +50,6 @@ def newsletter_unsubscribe(request):
         messages.warning(request, "We couldn’t find that email.")
 
     return redirect("home")
+
+def custom_404(request, exception):
+    return render(request, "404.html", status=404)

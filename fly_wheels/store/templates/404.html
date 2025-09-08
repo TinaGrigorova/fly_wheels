@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found · Fly Wheels{% endblock %}
+
+{% block content %}
+<div class="py-5 text-center">
+  <h1 class="display-5">404</h1>
+  <p class="lead mb-4">We couldn’t find that page.</p>
+  <div class="d-flex gap-2 justify-content-center">
+    <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+    <a href="{% url 'shop' %}" class="btn btn-outline-secondary">Shop Wheels</a>
+  </div>
+</div>
+{% endblock %}
