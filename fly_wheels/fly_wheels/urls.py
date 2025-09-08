@@ -20,6 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from store.views import home
 from store.views import index
+from django.views.generic import TemplateView
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import ProductSitemap, CategorySitemap, StaticSitemap
+
+sitemaps = {
+    "products": ProductSitemap,
+    "static": StaticSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +35,9 @@ urlpatterns = [
     path('shop/', include('products.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path("robots.txt", TemplateView.as_view(
+        template_name="robots.txt", content_type="text/plain"
+    ), name="robots"),
 ]
 
 
