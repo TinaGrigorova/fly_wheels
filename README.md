@@ -451,7 +451,6 @@ Maintain consistent design with responsiveness in mind
 * [Google Fonts](https://fonts.google.com/) - Import main font the website.
 * [Figma](https://www.figma.com/) - Used to create wireframes and schemes
 * [Git](https://git-scm.com/) - Version control
-* [Favicon Generator](https://realfavicongenerator.net/) - Used to create a favicon
 * [JSHint](https://jshint.com/) - Used to validate JavaScript
 * [W3C Markup Validation Service](https://validator.w3.org/) - Used to validate HTML
 * [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
