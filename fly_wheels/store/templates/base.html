@@ -215,6 +215,15 @@
       </div>
     </div>
   </div>
+  <form action="{% url 'newsletter-subscribe' %}" method="post" class="row g-2 justify-content-center">
+  {% csrf_token %}
+  <div class="col-auto">
+    <input type="email" name="email" class="form-control" placeholder="Your email" required>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-warning">Subscribe</button>
+  </div>
+</form>
 </footer>
 
 
