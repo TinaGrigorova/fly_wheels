@@ -3,7 +3,7 @@
 
 ## 🔗 Live Demo
 
-[Fly Wheels App]()
+[Fly Wheels App](https://flywheels-391941410acb.herokuapp.com)
 
 [GitHub Repository](https://github.com/TinaGrigorova/fly_wheels)
 
@@ -128,8 +128,7 @@ Maintain consistent design with responsiveness in mind
 
 
 ### Color Scheme
-![Color Scheme]()
-![Color Scheme]()
+![Color Scheme](/fly_wheels/media/images/readme_images/color_pallet.png)
 
 ### Wireframe
 
@@ -138,28 +137,35 @@ Maintain consistent design with responsiveness in mind
 </summary>
 
 
-![Home Page]()
+![Home Page](/fly_wheels/media/images/readme_images/wireframe_home.png)
 </details>
 
 <details>
-<summary> Place an Order
+<summary> Cart
 </summary>
   
-![My Orders Page]()
+![My Orders Page](/fly_wheels/media/images/readme_images/wireframe_cart.png)
 </details>
 
 <details>
-<summary> Order History  
+<summary> Shop
 </summary>
-
-![Order History]()
+  
+![Order History](/fly_wheels/media/images/readme_images/wireframe_shop.png)
 </details>
 
 <details>
 <summary> Login Page
 </summary>
 
-![Delete Order]()
+![Delete Order](/fly_wheels/media/images/readme_images/wireframe_auth.png)
+</details>
+
+<details>
+<summary> Sudccess Page
+</summary>
+
+![Delete Order](/fly_wheels/media/images/readme_images/wireframe_success.png)
 </details>
 
 ---
@@ -288,7 +294,6 @@ Maintain consistent design with responsiveness in mind
     
 ![Home Page - Upper](/fly_wheels/media/images/readme_images/main_page.png)
 
-![Home Page - Lower](path/to/homepage_lower.png)
 
 * Navigation Bar
   * Present across all pages for seamless navigation.
@@ -304,8 +309,8 @@ Maintain consistent design with responsiveness in mind
   * Product cards with image, name, price
   * “Add to Cart” button linking directly to cart functionality
 
-![Featured Products](/fly_wheels/media/images/readme_images/shop_upper.png)
-![Featured Products](/fly_wheels/media/images/readme_images/shop_lower.png)
+![Featured Products](/fly_wheels/media/images/readme_images/shop1.png)
+![Featured Products](/fly_wheels/media/images/readme_images/shop2.png)
 
 * Shop Page
   * Shows all available wheels, organized by category.
@@ -314,8 +319,8 @@ Maintain consistent design with responsiveness in mind
   * Product cards with image, name, and price
   * Buttons to view details or add to cart
    
-![Shop Page](/fly_wheels/media/images/readme_images/alloy_wheels_page.png)
-![Shop Page](/fly_wheels/media/images/readme_images/track_wheels_page.png)
+![Shop Page](/fly_wheels/media/images/readme_images/alloy_wheels.png)
+![Shop Page](/fly_wheels/media/images/readme_images/track_edition.png)
 
 * Product Detail Page
   * Dedicated page for each wheel product.
@@ -326,14 +331,14 @@ Maintain consistent design with responsiveness in mind
   * Optional technical details or size info
  
   * Brand Page 
-   ![Product Detail](/fly_wheels/media/images/readme_images/brand_page.png)
-   ![Product Detail](/fly_wheels/media/images/readme_images/brand_page1.png)
+   ![Product Detail](/fly_wheels/media/images/readme_images/brand2.png)
+   ![Product Detail](/fly_wheels/media/images/readme_images/brand.png)
 
   * Size Page
-   ![Product Detail](/fly_wheels/media/images/readme_images/size_page.png)
+   ![Product Detail](/fly_wheels/media/images/readme_images/size.png)
 
   * Weight Page  
-   ![Product Detail](/fly_wheels/media/images/readme_images/weight_page.png)
+   ![Product Detail](/fly_wheels/media/images/readme_images/weight.png)
   
   
 * Cart Page
@@ -378,7 +383,7 @@ Maintain consistent design with responsiveness in mind
   * Redirects and logs in the user upon registration
 
     
-![Sign Up](/fly_wheels/media/images/readme_images/singup_page.png)
+![Sign Up](/fly_wheels/media/images/readme_images/sign_up.png)
 
 * Order History (My Orders)
   * Lets users view their previous purchases.
@@ -389,19 +394,19 @@ Maintain consistent design with responsiveness in mind
 ![Order History](/fly_wheels/media/images/readme_images/my_orders_page.png)
 
 * Confirmation Messages
-  * Displays alerts after actions like order placement or cart update.
+  * Displays alerts after actions like order placement, cart update as well as subscriptions. 
     
-![Success Message](path/to/success_message.png)
+![Success Message](/fly_wheels/media/images/readme_images/add_to_basket.png)
 
-![Cart Updated](path/to/cart_updated.png)
+![Newsletter](/fly_wheels/media/images/readme_images/newsletter.png)
 
-![Error Message](path/to/error_message.png)
 
 * Footer
   * Fixed at the bottom of each page.
   * Contents:
   * Copyright
   * Branding and additional nav links
+  * Subsribe to website
 
 ![Footer](/fly_wheels/media/images/readme_images/footer.png)
 
@@ -461,18 +466,18 @@ Maintain consistent design with responsiveness in mind
 ---
 ## Deployment and Local Developement
 
-Live deployment can be found on this [View live website here]()
+Live deployment can be found on this [View live website here](https://flywheels-391941410acb.herokuapp.com)
 
 ### Local Developement
 
 #### How to Fork
 1. Log in(or Sign Up) to Github
-2. Go to repository for this project[Track Day]([https://github.com/TinaGrigorova/fly_wheels])
+2. Go to repository for this project[Fly Wheels]([https://github.com/TinaGrigorova/fly_wheels])
 3. Click the fork button in the top right corner
 
 #### How to Clone
 1. Log in(or Sign Up) to Github
-2. Go to repository for this project [Track Day]([https://github.com/TinaGrigorova/fly_wheels])
+2. Go to repository for this project [Fly Wheels]([https://github.com/TinaGrigorova/fly_wheels])
 3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type the following command in the terminal (after the git clone you will need to paste the link you copied in step 3 above)
