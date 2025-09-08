@@ -179,7 +179,7 @@
           <a href="https://x.com/yourpage" class="text-white-50" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)"><i class="bi bi-twitter-x fs-5"></i></a>
         </div>
         <div class="col-md-4 d-flex justify-content-center justify-content-md-end">
-          {# Keep only if you have 'newsletter-subscribe' URL #}
+          {# For 'newsletter-subscribe' URL #}
           <form action="{% url 'newsletter-subscribe' %}" method="post" class="d-flex gap-2">
             {% csrf_token %}
             <input type="email" name="email" class="form-control form-control-sm w-auto" placeholder="Your email" required>
