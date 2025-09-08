@@ -24,6 +24,8 @@ from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import ProductSitemap, CategorySitemap, StaticSitemap
 
+handler404 = "store.views.custom_404"
+
 sitemaps = {
     "products": ProductSitemap,
     "static": StaticSitemap,

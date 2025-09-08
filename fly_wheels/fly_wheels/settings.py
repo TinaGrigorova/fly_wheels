@@ -21,7 +21,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-28fyhi=&x0yhm+43gzpsfgg-g45a!^gvgy+b*s5@z15=7i)tn#"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -56,7 +56,11 @@ CSRF_TRUSTED_ORIGINS = [
     "https://flywheels-391941410acb.herokuapp.com",
     "http://localhost:8000", "https://localhost:8000",
     "http://127.0.0.1:8000", "https://127.0.0.1:8000",
-    "https://*.app.github.dev",  
+    "https://*.app.github.dev", 
+    "https://flywheels-391941410acb.herokuapp.com",
+    "https://your-custom-domain.com",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000", 
 
 ]
 
