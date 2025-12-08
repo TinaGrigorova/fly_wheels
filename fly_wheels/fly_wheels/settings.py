@@ -24,11 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DJANGO_DEBUG", "0") == "1"
 
-DEBUG = os.environ.get("DEBUG", "True") == "True"
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "djan%go.core.mail.backends.smtp.EmailBackend"
 
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Fly Wheels <orders@yourdomain.com>")
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
@@ -76,6 +74,7 @@ INSTALLED_APPS = [
     'products',
     'store',
     'accounts',
+    'orders',
 ]
 
 MIDDLEWARE = [
