@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal as D
 
 # Create your models here.
 
@@ -37,6 +38,10 @@ class Order(models.Model):
     @property
     def item_count(self):
         return sum(item.quantity for item in self.items.all())
+    
+    @property
+    def total(self):
+        return sum((item.subtotal for item in self.items.all()), D("0.00"))
     
 
 class OrderItem(models.Model):
