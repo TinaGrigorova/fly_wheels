@@ -145,7 +145,6 @@ def _order_total_cents(order: Order) -> int:
     return int((total * 100).quantize(D("1")))
 
 
-@login_required
 @require_POST
 def create_checkout_session(request):
     """Create a Stripe Checkout Session and redirect the user there."""
