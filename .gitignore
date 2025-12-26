@@ -14,3 +14,8 @@ cloudinary_python.txt
 *.DS_Store
 .env
 *.sqlite3
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
