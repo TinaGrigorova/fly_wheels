@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Product, Order, CartItem
+from .models import ProductReview, WishlistItem, ContactRequest
 
 
 @admin.register(Product)
@@ -51,3 +52,20 @@ class CartItemAdmin(admin.ModelAdmin):
     list_display = ("order", "product", "quantity")
     list_filter = ("order", "product")
     search_fields = ("order__user__username", "product__name")
+
+
+@admin.register(ProductReview)
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_display = ("product", "user", "rating", "created_at")
+    list_filter = ("rating", "created_at")
+
+
+@admin.register(WishlistItem)
+class WishlistItemAdmin(admin.ModelAdmin):
+    list_display = ("user", "product", "created_at")
+
+
+@admin.register(ContactRequest)
+class ContactRequestAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "created_at", "handled")
+    list_filter = ("handled",)
