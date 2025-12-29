@@ -126,3 +126,20 @@ class CartItem(models.Model):
     def subtotal(self) -> Decimal:
         return (self.product.price or Decimal("0.00")) * self.quantity
 
+class ProductReview(models.Model):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="reviews"
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.PositiveSmallIntegerField(
+        choices=[(i, i) for i in range(1, 6)]
+    )
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        unique_together = ("product", "user")
+
+    def __str__(self):
+        return f"{self.product.name} – {self.rating}/5 by {self.user.username}"
