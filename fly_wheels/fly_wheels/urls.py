@@ -7,6 +7,8 @@ from store.views import index
 from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import ProductSitemap, CategorySitemap, StaticSitemap
+from django.views.static import serve
+from django.urls import re_path
 
 handler404 = "store.views.custom_404"
 
@@ -29,3 +31,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += [
+        re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
+    ]
