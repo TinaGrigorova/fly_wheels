@@ -1,4 +1,4 @@
-# FLy Wheels | Testing
+# Fly Wheels | Testing
 
 Return to [README](README.md)
 - - -
@@ -41,7 +41,7 @@ The Fly Wheels website was meticulously tested across a variety of devices and s
 The Fly Wheels website was rigorously tested across multiple web browsers to ensure consistent functionality and appearance. This testing process guarantees a smooth and uniform user experience, regardless of the browser used.​
 
 <details>
-<summary> Opera
+<summary> Chrome
 </summary>
 
 ![Chrome](/fly_wheels/media/images/testing_images/chrome_testing.png)
@@ -312,32 +312,25 @@ Device testing was conducted on a variety of phone models, including Iphone 11, 
 | Unwanted debug link printed above hero collage                                         | Removed stray debug anchor from the template and moved canonical URL to a `<link rel="canonical">` in `<head>`.                                 |
 | Git push rejected (remote ahead)                                                       | Resolved via `git pull --rebase origin main`, then `git push`.                                                                                  |
 
-
 ## Features Testing
- 
-| Page                | User Action                                      | Expected Result                                              | Status |
-|---------------------|--------------------------------------------------|---------------------------------------------------------------|--------|
-| **Home Page**       | Click on Logo                                    | Redirect to Home Page                                        | ✅ PASS |
-|                     | Click on Sign Up button                          | Redirect to Sign Up page                                     | ✅ PASS |
-|                     | Click on Login                                   | Redirect to Login page                                       | ✅ PASS |
-|                     | Click on Shop                                    | Redirect to Shop page                                        | ✅ PASS |
-| **Categories**       | Click on "All Categories"                       | Redirect to All Categories page                               | ✅ PASS |
-|                     | Click on Brand, Size and Weight                  | Redirect to Brand, Size and Weight page                      | ✅ PASS |
-|                     | Click on add to cart                             | Displays conf. msg and redirect to cart                       | ✅ PASS |
-| **Sign Up Page**    | Fill invalid form                                | Displays validation errors                                   | ✅ PASS |
-|                     | Submit valid form                                | Account created and redirected to homepage                   | ✅ PASS |
-|                     | Click login link                                 | Redirect to login page                                       | ✅ PASS |
-| **Login Page**      | Submit invalid credentials                       | Displays error message                                       | ✅ PASS |
-|                     | Submit valid credentials                         | Redirect to homepage, user greeted                           | ✅ PASS |
-|                     | Click sign up link                               | Redirect to signup page                                      | ✅ PASS |
-| **Log in Page**     | Not logged in                                    | Redirected to login page                                     | ✅ PASS |
-|                     | Submit empty form                                | Display validation errors                                    | ✅ PASS |
-|                     | Select valid data                                | Booking successful, redirected to My Bookings                | ✅ PASS |
-|                     | Try booking same track, date, time               | Validation error, can't double book                          | ✅ PASS |
-| **My Orders**     | View orders details                              | Details displayed in table                                   | ✅ PASS |
-| **Edit Orders**     | Update items                                     | Updates successfully                                         | ✅ PASS |
-|                     | Delete items                                     | Deletes successfully with prompt msg                          | ✅ PASS |
-| **All Tracks**      | Hover card                                       | Show full description overlay                                | ✅ PASS |
+
+| Page            | User Action                         | Expected Result                                      | Status |
+|-----------------|-------------------------------------|-----------------------------------------------------|--------|
+| Home Page       | Click logo                          | Redirect to Home page                               | ✅ PASS |
+|                 | Click Shop                          | Redirect to Shop page                               | ✅ PASS |
+|                 | Click Login / Sign Up               | Redirect to auth pages                              | ✅ PASS |
+| Shop Page       | View products                       | Products display with images and prices             | ✅ PASS |
+|                 | Filter by brand/size/weight         | Filtered products shown correctly                  | ✅ PASS |
+| Cart            | Add product to cart                 | Product added, confirmation message shown           | ✅ PASS |
+|                 | Update quantity                     | Cart total updates correctly                        | ✅ PASS |
+|                 | Remove product                      | Product removed from cart                           | ✅ PASS |
+| Checkout        | Access checkout (logged in)         | Redirect to Stripe checkout                         | ✅ PASS |
+|                 | Complete payment                    | Redirect to order success page                      | ✅ PASS |
+| My Orders       | View order history                  | User sees only their own orders                     | ✅ PASS |
+| Admin           | Manage products and orders          | CRUD operations available                           | ✅ PASS |
+| Error Pages     | Enter invalid URL                   | Custom 404 page displayed                           | ✅ PASS |
+
+
 | **Error Pages**     | Type invalid URL                                 | Custom 404 page appears                                      | ✅ PASS |
 
 ---

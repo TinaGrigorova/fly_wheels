@@ -173,81 +173,91 @@ Maintain consistent design with responsiveness in mind
 ## Data Models
 
 1. User Model
- * Uses Django’s built-in User (with Django Allauth for sign-up, login, password reset, etc.).
- * Relationships
-   * One User → many Orders.
-   * Many-to-many between User and Product through Wishlist (see Wishlist model).
+* Uses Django’s built-in authentication system (`django.contrib.auth`) for sign-up, login, logout, and password management.
+* Relationships:
+  * One User → many Orders.
+  * One User → many Wishlist Items.
+  * One User → many Product Reviews.
 
-3. Product Model
- * Represents each wheel available in the shop.
- * Key fields
-   * name
-   * slug
-   * description
-   * brand
-   * material
-   * size (and/or size dimensions)
-   * weight (if present)
-   * price
-   * discount_percentage (if on sale)
-   * quantity_in_stock
-   * is_top_product (for homepage/featured)
-   * delivery_time
-   * image / image_url
-   * category (FK → Category)
- * Notes
-   * A Product belongs to exactly one Category but can show up in multiple filtered views (brand/size/weight, etc.).
 
-4. Category Model
- * Groups wheels by type (e.g., Alloy Wheels, Track Edition).
- * Fields
-   * name
-   * slug (or friendly_name if you’re exposing a UI-friendly label)
-* Relationship
-   * One Category → many Products.
+2. Product Model
+* Represents each wheel available in the shop.
+* Key fields:
+ * name
+ * price
+ * compare_at_price (optional discounted price)
+ * image
+ * category (choice field: Alloy Wheels / Track Edition)
+ * brand
+ * size
+ * weight
+ * pack_size (single item or pack)
+ * material (optional)
+ * delivery_estimate (optional)
+ * in_stock (boolean)
+ * created_at / updated_at
+* Notes:
+ * Products are filtered by category, brand, size, and weight.
+ * Supports sale pricing and pack-based purchases.
 
-5. Order Model
- * Captures a completed purchase.
- * Key fields
-   * user (FK → User, nullable for guest checkouts if you allow them)
-   * order_number (UUID or unique string)
-   * full_name
-   * email
-   * Address fields: phone_number, address1, address2, city, county, postal_code
-   * Monetary fields: delivery, total, grand_total
-   * created (date/datetime)
-   * Payment fields: stripe_pid, paid (boolean)
-* Relationship
-   * One Order → many OrderLineItems.
-     
-6. OrderLineItem Model
- * A single product line within an order.
- * Fields
-   * order (FK → Order)
-   * product (FK → Product)
-   * price (unit price captured at time of order)
-   * quantity
-   * lineitem_total (calculated = price * quantity)
- * Notes
-   * Order totals are computed from line items + delivery.
-     
-7 . Contact Model
- * Stores messages sent from the contact form (so you have a record even if email delivery fails).
- * Fields
-   * name
-   * email
-   * subject
-   * message (text)
-   * created_at (date/datetime)
-     
-8. Newsletter Model
- * Tracks newsletter opt-ins/opt-outs.
- * Fields
-   * email
-   * is_subscribed (boolean)
-   * date_subscribed
-   * date_unsubscribed (nullable)
+3. Order Model
+* Represents a user’s shopping order.
+* Key fields:
+ * user (ForeignKey → User)
+ * email (captured at checkout)
+ * created_at
+ * paid_at
+ * is_paid (boolean)
+* Relationships:
+ * One Order → many Cart Items.
+* Notes:
+ * Orders are created when a user adds items to the cart.
+ * An order is marked as paid after successful Stripe checkout.
 
+
+4. CartItem Model
+* Represents a product added to a user’s cart.
+* Key fields:
+ * order (ForeignKey → Order)
+ * product (ForeignKey → Product)
+ * quantity
+* Notes:
+ * Each CartItem calculates a subtotal based on product price and quantity.
+ * Prevents duplicate products per order using a unique constraint.
+
+5. ProductReview Model (Custom Model)
+* Allows users to leave reviews for products.
+* Key fields:
+ * product (ForeignKey → Product)
+ * user (ForeignKey → User)
+ * rating (1–5)
+ * comment
+ * created_at
+* Notes:
+ * Each user can submit one review per product.
+ * Reviews are managed via the Django admin interface.
+
+6. WishlistItem Model (Custom Model)
+* Allows users to save products for later reference.
+* Key fields:
+ * user (ForeignKey → User)
+ * product (ForeignKey → Product)
+ * created_at
+* Notes:
+ * Prevents duplicate wishlist entries per user.
+ * Managed via the Django admin interface.
+
+7. ContactRequest Model (Custom Model)
+* Stores messages submitted through the contact form.
+* Key fields:
+ * name
+ * email
+ * message
+ * created_at
+ * handled (boolean)
+* Notes:
+ * Ensures contact requests are stored even if email delivery fails.
+ * Admin users can mark requests as handled.
 
 --- 
 ## Security Features
@@ -433,18 +443,23 @@ Maintain consistent design with responsiveness in mind
 | Frontend        | HTML5, CSS3, Bootstrap 5         |
 | Backend         | Python 3.12, Django 5.2          |
 | Database        | PostgreSQL                       |
-| Authentication  | Django built-in Auth             |
+| Authentication  | Django built-in authentication   |
 | Hosting         | Heroku                           |
 | Version Control | Git, GitHub                      |
+| Payments        | Stripe (test mode)               |
+
 
 ---
 ### Databases Used
 
-* [ElephantSQL](https://www.elephantsql.com/) - Postgres database
+* PostgreSQL – Relational database used for storing application data.
+* Product images are stored within the project and served via the `/media/` route.
+* In a production environment, cloud-based storage (e.g. Cloudinary or AWS S3) would typically be used.
+
 
 ### Frameworks & Libreries
 * Django – A high-level Python web framework that encourages rapid development and clean, pragmatic design.
-* Django Allauth – Integrated for comprehensive user authentication, registration, and account management.
+* Django Authentication – Used for user registration, login, logout, and session management.
 * Bootstrap 5 – Utilized for responsive design and styling, ensuring a mobile-first and consistent user interface.
 * Heroku – Platform-as-a-Service (PaaS) used for deploying and hosting the web application.
 
