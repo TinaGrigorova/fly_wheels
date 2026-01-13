@@ -259,6 +259,8 @@ Maintain consistent design with responsiveness in mind
  * Ensures contact requests are stored even if email delivery fails.
  * Admin users can mark requests as handled.
 
+
+
 --- 
 ## Security Features
 
@@ -290,6 +292,9 @@ Maintain consistent design with responsiveness in mind
 * Checkout system with order summary and confirmation.
 * Admin interface to manage products, categories, and orders.
 * Protected views to ensure only logged-in users can check out and view past orders.
+* After a successful Stripe checkout, an order confirmation email is sent to the customer.
+* Emails include a summary of the order and total amount.
+* Email functionality was tested using Mailtrap to ensure reliable delivery during development.
 
 
 ### Existing Features
@@ -410,7 +415,23 @@ Maintain consistent design with responsiveness in mind
 
 ![Newsletter](/fly_wheels/media/images/readme_images/newsletter.png)
 
+![Whish List](/fly_wheels/media/images/readme_images/whishlist.png)
 
+![404 Error](/fly_wheels/media/images/readme_images/404.png)
+
+* 404 Error Page 
+  * Displayed when a user navigates to a non-existent URL. The page provides a user-friendly message and clear navigation options back to the main site, improving overall user experience and error handling.
+
+![FaceBook](/fly_wheels/media/images/readme_images/facebook.png)
+
+* FaceBook Page
+  * Fly Wheels Facebook business page used to demonstrate a potential marketing and social media presence. The page highlights branding, product promotion, and customer engagement opportunities as part of the project’s digital marketing strategy.
+
+![Custom Models](/fly_wheels/media/images/readme_images/custom_models.png)
+
+* Custom Models 
+  * Django admin interface with the custom models ProductReview, WishlistItem, and ContactRequest. These bespoke models extend the core e-commerce functionality by storing user engagement data and customer enquiries, and can be fully managed by admin users.
+  
 * Footer
   * Fixed at the bottom of each page.
   * Contents:
@@ -433,7 +454,6 @@ Maintain consistent design with responsiveness in mind
 - Filter by price range in the Shop view
 - Admin sales dashboard with order statistics and performance metrics
 
-
 ---
 
 ## 🛠️ Technologies Used
@@ -453,8 +473,6 @@ Maintain consistent design with responsiveness in mind
 ### Databases Used
 
 * PostgreSQL – Relational database used for storing application data.
-* Product images are stored within the project and served via the `/media/` route.
-* In a production environment, cloud-based storage (e.g. Cloudinary or AWS S3) would typically be used.
 
 
 ### Frameworks & Libreries
@@ -462,6 +480,7 @@ Maintain consistent design with responsiveness in mind
 * Django Authentication – Used for user registration, login, logout, and session management.
 * Bootstrap 5 – Utilized for responsive design and styling, ensuring a mobile-first and consistent user interface.
 * Heroku – Platform-as-a-Service (PaaS) used for deploying and hosting the web application.
+
 
 ### Programs Used
 
@@ -483,6 +502,11 @@ Maintain consistent design with responsiveness in mind
 
 Live deployment can be found on this [View live website here](https://flywheels-391941410acb.herokuapp.com)
 
+* Static files are served using WhiteNoise.
+* Media files are served via the `/media/` route.
+* Environment variables are configured securely using Heroku Config Vars.
+
+
 ### Local Developement
 
 #### How to Fork
@@ -500,7 +524,7 @@ Live deployment can be found on this [View live website here](https://flywheels-
 7. Install the packages from the requirements.txt file - run Command pip3 install -r requirements.txt
 
 ### ElephantSQL Database
-[Track Day](https://github.com/TinaGrigorova/fly_wheels) is using [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database
+[Fly Wheels](https://github.com/TinaGrigorova/fly_wheels) is using [ElephantSQL](https://www.elephantsql.com/) PostgreSQL Database
 
 1. Click Create New Instance to start a new database.
 2. Provide a name (this is commonly the name of the project: tribe).
