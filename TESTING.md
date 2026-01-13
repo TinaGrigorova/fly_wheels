@@ -67,6 +67,7 @@ The Fly Wheels website was rigorously tested across multiple web browsers to ens
 
 ![Iphone Internet Mobile](/fly_wheels/media/images/testing_images/phone.png)
 </details>
+
 ---
 ## Device Testing
 
