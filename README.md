@@ -434,6 +434,19 @@ Maintain consistent design with responsiveness in mind
 * Custom Models 
   * Django admin interface with the custom models ProductReview, WishlistItem, and ContactRequest. These bespoke models extend the core e-commerce functionality by storing user engagement data and customer enquiries, and can be fully managed by admin users.
   
+![Order Confirmation](/fly_wheels/media/images/readme_images/email_confirmation.png)
+
+* Order Confirmation 
+  * When an order is successfully placed, the system attempts to send a confirmation email to the customer.
+* The email includes:
+ * A personalised greeting
+ * Order number
+ * List of purchased products with quantities and prices
+ * Total order amount
+* Emails are generated using Django’s email framework and rendered with a custom HTML email template.
+
+![Footer](/fly_wheels/media/images/readme_images/footer.png)
+
 * Footer
   * Fixed at the bottom of each page.
   * Contents:
