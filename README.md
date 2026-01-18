@@ -295,6 +295,7 @@ Maintain consistent design with responsiveness in mind
 * After a successful Stripe checkout, an order confirmation email is sent to the customer.
 * Emails include a summary of the order and total amount.
 * Email functionality was tested using Mailtrap to ensure reliable delivery during development.
+* Defensive programming is implemented to ensure that failures (such as email delivery issues) do not prevent successful order completion.
 
 
 ### Existing Features
@@ -422,27 +423,34 @@ Maintain consistent design with responsiveness in mind
 ![404 Error](/fly_wheels/media/images/readme_images/404.png)
 
 * 404 Error Page 
-  * Displayed when a user navigates to a non-existent URL. The page provides a user-friendly message and clear navigation options back to the main site, improving overall user experience and error handling.
+  * A custom 404 error page is displayed when a user navigates to a non-existent URL.  
+  * The page provides a clear error message and navigation options back to the main site, improving usability and user experience.
+
 
 ![FaceBook](/fly_wheels/media/images/readme_images/facebook.png)
 
-* FaceBook Page
-  * Fly Wheels Facebook business page used to demonstrate a potential marketing and social media presence. The page highlights branding, product promotion, and customer engagement opportunities as part of the project’s digital marketing strategy.
+* Facebook Business Page  
+  * The Fly Wheels Facebook page demonstrates a potential digital marketing and social media presence.  
+  * It showcases branding, product promotion, and customer engagement opportunities as part of the project’s marketing strategy.
+
 
 ![Custom Models](/fly_wheels/media/images/readme_images/custom_models.png)
 
-* Custom Models 
-  * Django admin interface with the custom models ProductReview, WishlistItem, and ContactRequest. These bespoke models extend the core e-commerce functionality by storing user engagement data and customer enquiries, and can be fully managed by admin users.
+* Custom Models (Admin Interface)
+  * Shows the Django admin interface with custom models including ProductReview, WishlistItem, and ContactRequest.  
+  * hese models extend the core e-commerce functionality by storing user engagement data, product feedback, and customer enquiries. 
+  * All models can be fully managed by admin users.
+
   
 ![Order Confirmation](/fly_wheels/media/images/readme_images/email_confirmation.png)
 
 * Order Confirmation 
   * When an order is successfully placed, the system attempts to send a confirmation email to the customer.
 * The email includes:
- * A personalised greeting
- * Order number
- * List of purchased products with quantities and prices
- * Total order amount
+  * A personalised greeting
+  * Order number
+  * List of purchased products with quantities and prices
+  * Total order amount
 * Emails are generated using Django’s email framework and rendered with a custom HTML email template.
 
 ![Footer](/fly_wheels/media/images/readme_images/footer.png)
@@ -454,7 +462,6 @@ Maintain consistent design with responsiveness in mind
   * Branding and additional nav links
   * Subsribe to website
 
-![Footer](/fly_wheels/media/images/readme_images/footer.png)
 
 ---
 
@@ -470,6 +477,22 @@ Maintain consistent design with responsiveness in mind
 - Admin sales dashboard with order statistics and performance metrics
 
 ---
+
+### Order Confirmation Emails
+
+After a successful checkout, the system attempts to send an order confirmation email to the customer.
+
+The email includes:
+- A personalised greeting using the customer’s name
+- A unique order number
+- A list of purchased products with quantities and prices
+- The total order amount
+
+Emails are generated using Django’s email framework and rendered with a custom HTML email template.
+During development and testing, Mailtrap was used to safely capture and verify outgoing emails without sending real emails to customers.
+
+If email delivery fails (e.g. production SMTP limitations), the order is still successfully created and the user is notified via a non-blocking message. This ensures a smooth checkout experience without breaking core functionality.
+
 
 ## 🛠️ Technologies Used
 
