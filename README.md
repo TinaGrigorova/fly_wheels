@@ -493,6 +493,12 @@ During development and testing, Mailtrap was used to safely capture and verify o
 
 If email delivery fails (e.g. production SMTP limitations), the order is still successfully created and the user is notified via a non-blocking message. This ensures a smooth checkout experience without breaking core functionality.
 
+---
+### Business Model
+
+Fly Wheels follows a B2C e-commerce model, selling automotive wheels directly to consumers. Revenue is generated through product sales processed via Stripe checkout. Marketing is supported through a newsletter signup and a Facebook business page to improve brand visibility and customer engagement.
+
+--- 
 
 ## 🛠️ Technologies Used
 
